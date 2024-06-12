@@ -1,43 +1,50 @@
 <template>
   <v-card
-    class="mx-auto"
-    max-width="344"
+    class="d-flex flex-column justify-between"
+    elevation="5"
+    width="344"
   >
+      <v-img v-if="cat?.image?.url"
+        height="200px"
+        :src="cat?.image?.url"
+        contain
+      ></v-img>
+
+    <v-card-title v-else>
+      <v-icon size="100">mdi-cat</v-icon>
+      Image not available
+    </v-card-title>
+
+    <v-card-title>
+      {{ cat.name }}
+    </v-card-title>
+
+    <v-card-subtitle>
+      Origin: {{ cat.origin }}
+    </v-card-subtitle>
+
     <v-card-text>
-      <div>Word of the Day</div>
-
-      <img :alt="cat?.name" width="300px" :src="cat?.image?.url" />
-
-      <p>adjective</p>
-
-      <div class="text-medium-emphasis">
-        relating to or dependent on charity; charitable; charitable donations. Pertaining to alms.<br>
-        "an eleemosynary educational institution."
-      </div>
+        They are known for been {{ cat.temperament }}
     </v-card-text>
 
-    <v-card-actions>
+
+    <v-card-actions class="mt-auto">
       <v-btn
         color="teal-accent-4"
         text="Learn More"
         variant="text"
-        @click="reveal = true"
+        @click="readMore = true"
       ></v-btn>
     </v-card-actions>
 
     <v-expand-transition>
       <v-card
-        v-if="reveal"
-        class="position-absolute w-100"
+        v-if="readMore"
+        class="position-absolute w-100 d-flex flex-column justify-between"
         height="100%"
-        style="bottom: 0;"
       >
-        <v-card-text class="pb-0">
-          <p class="text-h4">Origin</p>
-
-          <p class="text-medium-emphasis">
-            late 16th century (as a noun denoting a place where alms were distributed): from medieval Latin eleemosynarius, from late Latin eleemosyna ‘alms’, from Greek eleēmosunē ‘compassion’
-          </p>
+        <v-card-text>
+            {{ cat?.description }}
         </v-card-text>
 
         <v-card-actions class="pt-0">
@@ -45,7 +52,7 @@
             color="teal-accent-4"
             text="Close"
             variant="text"
-            @click="reveal = false"
+            @click="readMore = false"
           ></v-btn>
         </v-card-actions>
       </v-card>
@@ -65,7 +72,7 @@ export default {
   },
 
   data: () => ({
-    reveal: false,
+    readMore: false,
   }),
 
 
@@ -76,6 +83,8 @@ export default {
 
 </script>
 
-<style scoped>
+<style scoped></style>
 
-</style>
+
+
+

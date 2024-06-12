@@ -1,5 +1,5 @@
 <template>
-  <v-pagination :length="length"></v-pagination>
+  <v-pagination class="pagination" :length="length"></v-pagination>
 </template>
 
 <script>
@@ -16,3 +16,8 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+</style>
+

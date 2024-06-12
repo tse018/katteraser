@@ -1,12 +1,24 @@
 <template>
-  <div>
-    <v-autocomplete
-      clearable
-      label="Search"
-      :items="findCatName"
-      v-model="search"
-    ></v-autocomplete>
-  </div>
+<div>
+  <v-autocomplete
+    :items="findCatName"
+    class="mx-auto"
+    density="comfortable"
+    menu-icon=""
+    prepend-inner-icon="mdi-magnify"
+    style="max-width: 350px;"
+    theme="light"
+    variant="solo"
+    auto-select-first
+    item-props
+    rounded
+    label="Search for a cat breed"
+    v-model="search"
+    clearable
+  ></v-autocomplete>
+</div>
+
+
 </template>
 
 <script>
