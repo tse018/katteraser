@@ -1,19 +1,22 @@
 <template>
   <v-card
-    class="d-flex flex-column justify-between"
+    class="d-flex flex-column"
     elevation="5"
     width="344"
   >
+
+    <div class="image-container">
       <v-img v-if="cat?.image?.url"
-        height="200px"
-        :src="cat?.image?.url"
-        contain
+             height="100%"
+             :src="cat?.image?.url"
+             contain
       ></v-img>
 
-    <v-card-title v-else>
-      <v-icon size="100">mdi-cat</v-icon>
-      Image not available
-    </v-card-title>
+      <v-card-title v-else class="d-flex align-center justify-center h-100">
+        <v-icon size="100">mdi-cat</v-icon>
+        Image not available
+      </v-card-title>
+    </div>
 
     <v-card-title>
       {{ cat.name }}
@@ -31,7 +34,7 @@
     <v-card-actions class="mt-auto">
       <v-btn
         color="teal-accent-4"
-        text="Learn More"
+        text="Read More"
         variant="text"
         @click="readMore = true"
       ></v-btn>
@@ -83,7 +86,11 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.image-container {
+  height: 200px;
+}
+</style>
 
 
 

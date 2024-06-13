@@ -1,7 +1,7 @@
 <template>
-  <div class="h-100 d-flex flex-column w-100 justify-center">
+  <div class="h-100 d-flex flex-column">
     <ToolBar />
-    <SearchBar class="pt-5 m-5" :cats="cats" @search="filterCats" />
+    <SearchBar class="pt-5 mx-15" :cats="cats" @search="filterCats" />
 
     <div v-if="error">
       <p>{{ error }}</p>
@@ -76,10 +76,14 @@ export default {
 .cats-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 20px; /* Adjust gap as needed */
+  gap: 20px;
   max-width: 100%;
   align-self: center;
+  justify-items: center;
+  padding-bottom: 20px;
 }
 
-
+.cats-container > *:only-child {
+  grid-column: 1 / -1;
+}
 </style>
