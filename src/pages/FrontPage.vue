@@ -1,14 +1,14 @@
 <template>
-  <div class="page-container h-100 d-flex flex-column">
+  <div class="h-100 d-flex flex-column w-100 justify-center">
     <ToolBar />
-    <SearchBar :cats="cats" @search="filterCats" />
+    <SearchBar class="pt-5 m-5" :cats="cats" @search="filterCats" />
 
     <div v-if="error">
       <p>{{ error }}</p>
     </div>
 
-    <div class="card-container" v-else>
-      <CatCard class="ma-4" v-for="cat in filteredCats" :key="cat.id" :cat="cat" />
+    <div class="cats-container" v-else>
+      <CatCard v-for="cat in filteredCats" :key="cat.id" :cat="cat" />
     </div>
 
   </div>
@@ -36,13 +36,20 @@ export default {
       const apiKey = 'live_HQ2p2jHlCzLlVWK1G8ZjfFbqZWzBHewj6VhHfrDpdx5DLCVO58PCKRFrq8kYJLdz';
 
       try {
-        const response = await axios.get(url, {headers: {'x-api-key': apiKey}});
+
+        const config = {
+          headers: {
+            'x-api-key': apiKey
+          }
+        };
+
+        const response = await axios.get(url, config);
 
         if (response.status === 200) {
           this.cats = response.data;
           this.filteredCats = this.cats;
         } else {
-          this.error = `Unexpected response status: ${response.status}, ${response.statusText}`;
+          this.error = 'Something went wrong. Please try again later.';
         }
       } catch (error) {
         this.error = error;
@@ -65,9 +72,14 @@ export default {
 </script>
 
 <style scoped>
-.card-container {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px; /* Adjust gap as needed */
+  max-width: 100%;
+  align-self: center;
 }
+
+
 </style>
