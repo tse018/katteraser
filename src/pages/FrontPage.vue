@@ -1,16 +1,15 @@
 <template>
   <div class="h-100 d-flex flex-column">
-    <ToolBar />
-    <SearchBar class="pt-5 mx-15" :cats="cats" @search="filterCats" />
+    <ToolBar/>
+    <SearchBar class="pt-5 mx-15" :cats="cats" @search="filterCatName"/>
 
     <div v-if="error">
       <p>{{ error }}</p>
     </div>
 
     <div class="cats-container" v-else>
-      <CatCard v-for="cat in filteredCats" :key="cat.id" :cat="cat" />
+      <CatCard v-for="cat in filteredCats" :key="cat.id" :cat="cat"/>
     </div>
-
   </div>
 </template>
 
@@ -33,10 +32,10 @@ export default {
   methods: {
     async fetchCatApi() {
       const url = 'https://api.thecatapi.com/v1/breeds?limit=100&page=0';
+      // Todo: API key should be stored in a .env file but for the sake of this exercise it's hardcoded.
       const apiKey = 'live_HQ2p2jHlCzLlVWK1G8ZjfFbqZWzBHewj6VhHfrDpdx5DLCVO58PCKRFrq8kYJLdz';
 
       try {
-
         const config = {
           headers: {
             'x-api-key': apiKey
@@ -56,7 +55,7 @@ export default {
       }
     },
 
-    filterCats(search) {
+    filterCatName(search) {
       if (search) {
         this.filteredCats = this.cats.filter(cat => cat.name.includes(search));
       } else {
@@ -72,7 +71,6 @@ export default {
 </script>
 
 <style scoped>
-
 .cats-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));

@@ -3,6 +3,7 @@
     class="d-flex flex-column"
     elevation="5"
     width="344"
+    height="450"
   >
 
     <div class="image-container">
@@ -27,7 +28,9 @@
     </v-card-subtitle>
 
     <v-card-text>
-        They are known for been {{ cat.temperament }}
+      They are known for been {{ cat.temperament }}.
+      This cat has social needs rated at {{ cat.social_needs }}.
+      It is {{ cat.stranger_friendly }} in terms of friendliness towards strangers.
     </v-card-text>
 
 
@@ -46,8 +49,14 @@
         class="position-absolute w-100 d-flex flex-column justify-between"
         height="100%"
       >
-        <v-card-text>
-            {{ cat?.description }}
+        <v-card-text class="image-container">
+          {{ cat?.description }}
+          <br>
+          <br>
+          The cat weighs {{ cat.weight.metric }} kilograms in the metric system and {{ cat.weight.imperial }} pounds in
+          the imperial system. This cat requires a {{ cat.grooming }} level of grooming. It has an affection level of
+          {{ cat.affection_level }} and an energy level of {{ cat.energy_level }}. The cat is quite intelligent with an
+          intelligence level of {{ cat.intelligence }}, and it has an adaptability level of {{ cat.adaptability }}.
         </v-card-text>
 
         <v-card-actions class="pt-0">

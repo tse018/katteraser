@@ -1,19 +1,19 @@
 <template>
-<div>
-  <v-autocomplete
-    :items="findCatName"
-    class="mx-auto"
-    menu-icon=""
-    prepend-inner-icon="mdi-magnify"
-    max-width="500"
-    variant="solo"
-    auto-select-first
-    rounded
-    label="Search for a cat breed"
-    v-model="search"
-    clearable
-  ></v-autocomplete>
-</div>
+  <div>
+    <v-autocomplete
+      :items="findCatName"
+      class="mx-auto"
+      menu-icon=""
+      prepend-inner-icon="mdi-magnify"
+      max-width="500"
+      auto-select-first
+      rounded
+      label="Search for a cat breed"
+      v-model="search"
+      clearable
+      variant="solo"
+    ></v-autocomplete>
+  </div>
 </template>
 
 <script>
@@ -27,6 +27,7 @@ export default {
 
   data() {
     return {
+
       search: null,
     };
   },
